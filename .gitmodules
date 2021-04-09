@@ -1,3 +1,6 @@
 [submodule "vim/.vim/pack/plugins/start/nerdtree"]
 	path = vim/.vim/pack/plugins/start/nerdtree
 	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/.vim/pack/colors/start/material.vim"]
+	path = vim/.vim/pack/colors/start/material.vim
+	url = https://github.com/kaicataldo/material.vim.git

@@ -1,5 +1,11 @@
 " make sure this is being edited in the dotfiles repo
 
+" material theme
+if (has('termguicolors'))
+  set termguicolors
+endif
+colorscheme material
+
 " NERDTree
 nnoremap <C-\> :NERDTreeToggle<CR>
 autocmd VimEnter * NERDTree | wincmd p " open NERDTree when vim runs and move cursor to other window
