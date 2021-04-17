@@ -57,7 +57,6 @@ let g:alternateNoDefaultAlternate = 1
 nnoremap <F7> :vert term <CR>
 nnoremap <S-F7> :term <CR>
 nnoremap <F3> :set hlsearch! <CR>
-nnoremap <C-_> :NERDCommenterInvert <CR>
 
 " misc settings
 set number
