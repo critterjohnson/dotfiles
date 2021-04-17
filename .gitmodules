@@ -25,3 +25,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-surround"]
 	path = vim/.vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/.vim/pack/plugins/start/nerdcommenter"]
+	path = vim/.vim/pack/plugins/start/nerdcommenter
+	url = https://github.com/preservim/nerdcommenter.git
