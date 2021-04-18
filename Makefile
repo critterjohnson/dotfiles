@@ -5,7 +5,7 @@ move:
 
 # installs everything
 .PHONY: install
-install: install-vim install-vim-plugins
+install: clone-submodules install-vim install-vim-plugins move
 
 # install vim from source (https://github.com/vim/vim)
 ifndef VIMDIR
@@ -31,3 +31,7 @@ install-vim: move
 .PHONY: install-vim-plugins
 install-vim-plugins: move
 	cd ~/.vim/pack/plugins/start/YouCompleteMe && python3 install.py --all
+
+.PHONY: clone-submodules
+clone-submodules:
+	git submodule update --init --recursive
