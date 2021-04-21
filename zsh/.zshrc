@@ -28,7 +28,11 @@ source $ZSH/oh-my-zsh.sh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='find -L'
+if [[ `which fd &>/dev/null && $?` != 0 ]]; then
+  export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git' # requires https://github.com/sharkdp/fd
+else
+  export FZF_DEFAULT_COMMAD='find -L'
+fi
 
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
