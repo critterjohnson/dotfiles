@@ -7,7 +7,7 @@
 " <F7>		open terminal on right
 " Shift + <F7>	open terminal on the bottom
 " <F3>		toggle search highlighting
-" <leader>f	:FZF - fuzzy search for files
+" <C-P>		:FZF - fuzzy search for files
 
 " Useful commands
 " :GitGutterToggle - toggles vim-gitgutter, which is disabled by default
@@ -62,7 +62,7 @@ let g:fzf_layout = {'down' : '~30%'}
 nnoremap <F7> :vert term <CR>
 nnoremap <S-F7> :term <CR>
 nnoremap <F3> :set hlsearch! <CR>
-nnoremap <leader>f :FZF <CR>
+nnoremap <C-P> :FZF <CR>
 
 " misc settings
 set number
