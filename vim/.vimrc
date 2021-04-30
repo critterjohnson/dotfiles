@@ -8,6 +8,8 @@
 " Shift + <F7>	open terminal on the bottom
 " <F3>		toggle search highlighting
 " <C-P>		:FZF - fuzzy search for files
+" <leader>gd    :YcmCompleter GetDoc
+" <F2>          :YcmCompleter GoToDefinition
 
 " Useful commands
 " :GitGutterToggle - toggles vim-gitgutter, which is disabled by default
@@ -31,6 +33,8 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " clangd
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath('clangd')
+nnoremap <leader>gd :YcmCompleter GetDoc <CR>
+nnoremap <F2> :YcmCompleter GoToDefinition <CR>
 " let g:ycm_filetype_blacklist = { 'go': 1 } " let vim-go handle go
 
 " vim-go
@@ -51,14 +55,18 @@ let g:airline_powerline_fonts = 1 " requires a powerline font
 let g:gitgutter_enabled = 0
 
 " a.vim
-let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:/src/include/g'
+" TODO: make a plugin to use fzf instead of a.vim to switch between files,
+" could be configured to arbitrarily swap between files
+let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:/src/include/g' " add a regex pattern to replace src with include
 let g:alternateNoDefaultAlternate = 1
 
 " fzf
-set rtp+=~/.fzf
-let g:fzf_layout = {'down' : '~30%'}
+if executable('fzf')
+    set rtp+=~/.fzf
+    " let g:fzf_layout = {'down' : '~30%'}
+endif
 
-" custom shortcuts
+" custom vanilla vim shortcuts
 nnoremap <F7> :vert term <CR>
 nnoremap <S-F7> :term <CR>
 nnoremap <F3> :set hlsearch! <CR>
@@ -75,6 +83,10 @@ set hlsearch
 set splitbelow
 set splitright
 set fillchars+=vert:\ 
+set expandtab
+set autoindent
+set smartindent
+set shiftwidth=4
 
 augroup vimrcEx
   au!

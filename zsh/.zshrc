@@ -23,7 +23,7 @@ zstyle :prompt:pure:prompt:success color green
 # oh-my-zsh
 export ZSH="$(echo $HOME)/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm)
 source $ZSH/oh-my-zsh.sh
 
 # fzf
