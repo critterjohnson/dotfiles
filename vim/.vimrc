@@ -10,6 +10,7 @@
 " <C-P>		:FZF - fuzzy search for files
 " <leader>gd    :YcmCompleter GetDoc
 " <F2>          :YcmCompleter GoToDefinition
+" <F5>          toggle show whitespace (except tabs)
 
 " Useful commands
 " :GitGutterToggle - toggles vim-gitgutter, which is disabled by default
@@ -71,6 +72,7 @@ nnoremap <F7> :vert term <CR>
 nnoremap <S-F7> :term <CR>
 nnoremap <F3> :set hlsearch! <CR>
 nnoremap <C-P> :FZF <CR>
+nnoremap <F5> :set list! <CR>
 
 " misc settings
 set number
@@ -87,6 +89,7 @@ set expandtab
 set autoindent
 set smartindent
 set shiftwidth=4
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 augroup vimrcEx
   au!
