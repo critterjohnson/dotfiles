@@ -50,5 +50,5 @@ TOOLSDIR := ~ # default vim install directory is ~, clones vim to ~/vim
 endif
 .PHONY: install-misc-tools
 install-misc-tools:
-	cd $(TOOLSDIR) && git clone --depth 1 https://github.com/junegunn/fzf.git .fzf && \
-	./.fzf/install
+	cd $(TOOLSDIR) && (git clone --depth 1 https://github.com/junegunn/fzf.git || (cd fzf && git pull && cd ..)) && \
+	./fzf/install
