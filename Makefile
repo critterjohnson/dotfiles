@@ -52,3 +52,11 @@ endif
 install-misc-tools:
 	cd $(TOOLSDIR) && (git clone --depth 1 https://github.com/junegunn/fzf.git || (cd fzf && git pull && cd ..)) && \
 	./fzf/install
+
+# `go get` things that can be (requires go so not part of general install)
+.PHONY: go-gets
+go-gets:
+	go get github.com/google/go-jsonnet/cmd/jsonnet
+	go get github.com/google/go-jsonnet/cmd/jsonnetfmt
+	go get github.com/google/go-jsonnet/cmd/jsonnet-lint
+	go get github.com/google/go-jsonnet/cmd/jsonnet-deps

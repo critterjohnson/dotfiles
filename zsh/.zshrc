@@ -38,3 +38,4 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
+export PATH="$HOME/go/bin":$PATH
