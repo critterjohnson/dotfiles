@@ -40,3 +40,6 @@
 [submodule "zsh/.oh-my-zsh/custom/plugins/zsh-nvm"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-nvm
 	url = https://github.com/lukechilds/zsh-nvm
+[submodule "vim/.vim/pack/plugins/start/vim-jsonnet"]
+	path = vim/.vim/pack/plugins/start/vim-jsonnet
+	url = https://github.com/google/vim-jsonnet.git
