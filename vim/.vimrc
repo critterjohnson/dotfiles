@@ -46,6 +46,8 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = 'goimports'
+" other go
+autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0,W8 filetype=go
 
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
