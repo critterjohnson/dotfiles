@@ -10,6 +10,7 @@
 " <C-P>		:FZF - fuzzy search for files
 " <leader>gd    :YcmCompleter GetDoc
 " <F2>          :YcmCompleter GoToDefinition
+" <F3>          toggle word wrap
 " <F5>          toggle show whitespace (except tabs)
 
 " Useful commands
@@ -74,7 +75,19 @@ nnoremap <F7> :vert term <CR>
 nnoremap <S-F7> :term <CR>
 nnoremap <F3> :set hlsearch! <CR>
 nnoremap <C-P> :FZF <CR>
+nnoremap <F3> :set wrap! <CR>
+nnoremap <F4> :set relativenumber! <CR>
 nnoremap <F5> :set list! <CR>
+" move by visual line (not wrapped line)
+nmap j gj
+nmap k gk
+
+" line number stuff
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
 
 " misc settings
 set number
@@ -92,6 +105,10 @@ set autoindent
 set smartindent
 set shiftwidth=4
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set foldmethod=syntax
+set foldlevel=99
+set directory=$HOME/.vim/swapfiles//
+set incsearch
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"

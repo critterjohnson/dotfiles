@@ -12,6 +12,14 @@
 
 # aliases
 alias vfzf='vim $(fzf)'
+alias awsume='. awsume'
+
+# autocompletions
+autoload -Uz compinit
+compinit
+source <(kubectl completion zsh)
+source <(kops completion zsh)
+source <(greymatter utils completion zsh)
 
 # pure
 fpath+=$HOME/.zsh/pure
@@ -23,7 +31,7 @@ zstyle :prompt:pure:prompt:success color green
 # oh-my-zsh
 export ZSH="$(echo $HOME)/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # fzf
@@ -35,7 +43,15 @@ else
 fi
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
+# iTerm2 bindings
+if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+    bindkey "^[^[[C" forward-word
+    bindkey "^[^[[D" backward-word
+fi
+
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
-export PATH="$HOME/go/bin":$PATH
+export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"/Users/critterjohnson/.deno/bin":$PATH
+export KOPS_STATE_STORE=s3://bs-kops-state-store
+export EDITOR=vim
