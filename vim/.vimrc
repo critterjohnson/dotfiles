@@ -77,7 +77,7 @@ nnoremap <F3> :set hlsearch! <CR>
 nnoremap <C-P> :FZF <CR>
 nnoremap <F3> :set wrap! <CR>
 nnoremap <F4> :set relativenumber! <CR>
-nnoremap <F5> :set list! <CR>
+nnoremap <expr> <F5> &foldlevel ? 'zM' :'zR'
 " move by visual line (not wrapped line)
 nmap j gj
 nmap k gk
