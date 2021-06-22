@@ -17,9 +17,9 @@ alias awsume='. awsume'
 # autocompletions
 autoload -Uz compinit
 compinit
-source <(kubectl completion zsh)
-source <(kops completion zsh)
-source <(greymatter utils completion zsh)
+[ which kubectl &> /dev/null ] && source <(kubectl completion zsh)
+[ which kops &> /dev/null ] && source <(kops completion zsh)
+[ which greymatter &> /dev/null ] && source <(greymatter utils  completion zsh)
 
 # pure
 fpath+=$HOME/.zsh/pure

@@ -39,7 +39,7 @@ install-vim: move
 # installs vim plugins that require external installation / compilation
 .PHONY: install-vim-plugins
 install-vim-plugins: install-misc-tools move
-	cd ~/.vim/pack/plugins/start/YouCompleteMe && python3 install.py --all
+	cd ~/.vim/pack/plugins/start/YouCompleteMe && sudo python3 install.py --all
 
 .PHONY: clone-submodules
 clone-submodules:
