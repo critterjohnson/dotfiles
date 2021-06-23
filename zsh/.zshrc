@@ -13,6 +13,7 @@
 # aliases
 alias vfzf='vim $(fzf)'
 alias awsume='. awsume'
+alias smrterm='tmux split-window -h -p 30' # small right term
 
 # autocompletions
 autoload -Uz compinit

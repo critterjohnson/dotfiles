@@ -1,5 +1,5 @@
 .PHONY: move
-move: move-vim move-zsh
+move: move-vim move-zsh move-tmux
 
 .PHONY: move-vim
 move-vim:
@@ -11,6 +11,10 @@ move-zsh:
 	sudo cp ./zsh/.zshrc ~/.zshrc
 	sudo cp -r ./zsh/.oh-my-zsh ~
 	sudo cp -r ./zsh/.zsh ~
+
+.PHONY: move-tmux
+move-tmux:
+	sudo cp tmux/.tmux.conf ~/.tmux.conf
 
 # installs everything
 .PHONY: install

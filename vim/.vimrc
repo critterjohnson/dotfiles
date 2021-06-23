@@ -2,19 +2,24 @@
 " should be edited in the dotfiles repo and moved using `make`, not edited
 " directly
 
-" Critter vim shortcuts
+""" Critter vim shortcuts
 " Ctrl + \	show/hide NERDTree
-" <F7>		open terminal on right
-" Shift + <F7>	open terminal on the bottom
-" <F3>		toggle search highlighting
 " <C-P>		:FZF - fuzzy search for files
-" <leader>gd    :YcmCompleter GetDoc
 " <F2>          :YcmCompleter GoToDefinition
 " <F3>          toggle word wrap
-" <F5>          toggle show whitespace (except tabs)
+" <F5>          toggle fold
+" <F6>          toggle search highlighting
+" <F7>		open new tmux pane 
+" <leader>gd    :YcmCompleter GetDoc
+" <leader>gg    :GitGutterToggle
 
-" Useful commands
-" :GitGutterToggle - toggles vim-gitgutter, which is disabled by default
+" Go
+" <leader>tp    go test package, handled in .vim/ftplugin/go
+" <leader>tc    go test current, handled in .vim/ftplugin/go
+
+" Vimux
+" <leader>vl    :VimuxRunLastCommand
+" <leader>vc    :VimuxPromptCommand
 
 " material theme
 if (has('termguicolors'))
@@ -61,6 +66,7 @@ let g:airline_powerline_fonts = 1 " requires a powerline font
 
 " vim-gitgutter
 let g:gitgutter_enabled = 0
+nnoremap <leader>gg :GitGutterToggle <CR>
 
 " a.vim
 " TODO: make a plugin to use fzf instead of a.vim to switch between files,
@@ -74,10 +80,17 @@ if executable('fzf')
     " let g:fzf_layout = {'down' : '~30%'}
 endif
 
+" vimux
+nnoremap <leader>vl :VimuxRunLastCommand <CR>
+nnoremap <leader>vc :VimuxPromptCommand <CR>
+let g:VimuxUseNearest = 1
+let g:VimuxPromptString = "> "
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = "30"
+
 " custom vanilla vim shortcuts
-nnoremap <F7> :vert term <CR>
-nnoremap <S-F7> :term <CR>
-nnoremap <F3> :set hlsearch! <CR>
+nnoremap <F7> :!tmux split-window -h -p 30<CR><CR>
+nnoremap <F6> :set hlsearch! <CR>
 nnoremap <C-P> :FZF <CR>
 nnoremap <F3> :set wrap! <CR>
 nnoremap <F4> :set relativenumber! <CR>
