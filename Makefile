@@ -18,7 +18,11 @@ move-tmux:
 
 # installs everything
 .PHONY: install
-install: clone-submodules install-vim install-vim-plugins install-misc-tools move
+install: clone-submodules install-vim install-vim-plugins install-misc-tools install-kitty move
+
+.PHONY: install-kitty
+install-kitty:
+	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 # install vim from source (https://github.com/vim/vim)
 ifndef VIMDIR
