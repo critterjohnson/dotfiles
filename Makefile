@@ -14,7 +14,7 @@ move-zsh:
 
 .PHONY: move-kitty
 move-kitty:
-	sudo cp -r kitty/ ~/.config/kitty
+	sudo cp -r kitty/ ~/.config/
 
 # installs everything
 .PHONY: install
@@ -43,6 +43,7 @@ install-vim: move
             	--prefix=/usr/local \
 	&& make \
 	&& make install
+	sudo mkdir ~/.vim/swapfiles
 
 # installs vim plugins that require external installation / compilation
 .PHONY: install-vim-plugins
