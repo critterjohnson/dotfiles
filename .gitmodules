@@ -46,9 +46,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-toml"]
 	path = vim/.vim/pack/plugins/start/vim-toml
 	url = https://github.com/cespare/vim-toml.git
-[submodule "vim/.vim/pack/plugins/start/vimux"]
-	path = vim/.vim/pack/plugins/start/vimux
-	url = https://github.com/preservim/vimux.git
-[submodule "vim/.vim/pack/plugins/start/vimux-golang"]
-	path = vim/.vim/pack/plugins/start/vimux-golang
-	url = https://github.com/benmills/vimux-golang.git
+[submodule "vim/.vim/pack/plugins/start/vim-kitty-navigator"]
+	path = vim/.vim/pack/plugins/start/vim-kitty-navigator
+	url = https://github.com/knubie/vim-kitty-navigator.git

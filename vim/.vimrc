@@ -9,18 +9,13 @@
 " <F3>          toggle word wrap
 " <F5>          toggle fold
 " <F6>          toggle search highlighting
-" <F7>		open new tmux pane 
+" <F7>		open new tmux pane DOESN'T DO ANYTHING ANYMORE
 " <F8>          toggle 80 character colorcolumn
 " <leader>gd    :YcmCompleter GetDoc
 " <leader>gg    :GitGutterToggle
 
-" Go
-" <leader>tp    go test package, handled in .vim/ftplugin/go
-" <leader>tc    go test current, handled in .vim/ftplugin/go
-
-" Vimux
-" <leader>vl    :VimuxRunLastCommand
-" <leader>vc    :VimuxPromptCommand
+" kitty integration
+" <C-(h,j,k,l)> navigates between splits and kitty windows
 
 " material theme
 if (has('termguicolors'))
@@ -81,13 +76,12 @@ if executable('fzf')
     " let g:fzf_layout = {'down' : '~30%'}
 endif
 
-" vimux
-nnoremap <leader>vl :VimuxRunLastCommand <CR>
-nnoremap <leader>vc :VimuxPromptCommand <CR>
-let g:VimuxUseNearest = 1
-let g:VimuxPromptString = "> "
-let g:VimuxOrientation = "h"
-let g:VimuxHeight = "30"
+" kitty
+let g:kitty_navigator_no_mappings = 1
+nnoremap <C-h> :KittyNavigateLeft <CR>
+nnoremap <C-j> :KittyNavigateDown <CR>
+nnoremap <C-k> :KittyNavigateUp <CR>
+nnoremap <C-l> :KittyNavigateRight <CR>
 
 " markdown stuff
 autocmd BufEnter *.md setlocal textwidth=80
@@ -131,6 +125,7 @@ set foldmethod=syntax
 set foldlevel=99
 set directory=$HOME/.vim/swapfiles//
 set incsearch
+let &t_ut=''
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
