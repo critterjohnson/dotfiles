@@ -9,11 +9,14 @@
 
 # Aliases
 # vfzf		vim $(fzf)
+# smrterm       30% vertical terminal on the right (tmux)
+# botterm       50% bottom terminal (tmux)
 
 # aliases
 alias vfzf='vim $(fzf)'
 alias awsume='. awsume'
 alias smrterm='tmux split-window -h -p 30' # small right term
+alias botterm='tmux split-window -v' # bottom terminal
 
 # autocompletions
 autoload -Uz compinit

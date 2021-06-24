@@ -10,6 +10,7 @@
 " <F5>          toggle fold
 " <F6>          toggle search highlighting
 " <F7>		open new tmux pane 
+" <F8>          toggle 80 character colorcolumn
 " <leader>gd    :YcmCompleter GetDoc
 " <leader>gg    :GitGutterToggle
 
@@ -88,6 +89,9 @@ let g:VimuxPromptString = "> "
 let g:VimuxOrientation = "h"
 let g:VimuxHeight = "30"
 
+" markdown stuff
+autocmd BufEnter *.md setlocal textwidth=80
+
 " custom vanilla vim shortcuts
 nnoremap <F7> :!tmux split-window -h -p 30<CR><CR>
 nnoremap <F6> :set hlsearch! <CR>
@@ -95,6 +99,7 @@ nnoremap <C-P> :FZF <CR>
 nnoremap <F3> :set wrap! <CR>
 nnoremap <F4> :set relativenumber! <CR>
 nnoremap <expr> <F5> &foldlevel ? 'zM' :'zR'
+nnoremap <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 " move by visual line (not wrapped line)
 nmap j gj
 nmap k gk
