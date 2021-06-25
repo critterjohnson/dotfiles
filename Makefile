@@ -1,5 +1,5 @@
 .PHONY: move
-move: move-vim move-zsh move-tmux
+move: move-vim move-zsh move-kitty
 
 .PHONY: move-vim
 move-vim:
@@ -12,9 +12,9 @@ move-zsh:
 	sudo cp -r ./zsh/.oh-my-zsh ~
 	sudo cp -r ./zsh/.zsh ~
 
-.PHONY: move-tmux
-move-tmux:
-	sudo cp tmux/.tmux.conf ~/.tmux.conf
+.PHONY: move-kitty
+move-kitty:
+	sudo cp -r kitty/ ~/.config/kitty
 
 # installs everything
 .PHONY: install
