@@ -61,3 +61,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-cue"]
 	path = vim/.vim/pack/plugins/start/vim-cue
 	url = https://github.com/jjo/vim-cue.git
+[submodule "vim/.vim/pack/plugins/start/fzf.vim"]
+	path = vim/.vim/pack/plugins/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git

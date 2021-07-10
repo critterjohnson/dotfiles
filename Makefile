@@ -19,6 +19,7 @@ move-kitty:
 # installs everything
 .PHONY: install
 install: clone-submodules install-vim install-vim-plugins install-misc-tools install-kitty move
+	curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 
 .PHONY: install-kitty
 install-kitty:
@@ -69,3 +70,12 @@ go-gets:
 	go get github.com/google/go-jsonnet/cmd/jsonnetfmt
 	go get github.com/google/go-jsonnet/cmd/jsonnet-lint
 	go get github.com/google/go-jsonnet/cmd/jsonnet-deps
+
+.PHONY: fix-ycm
+fix-ycm:
+	cd ~/.vim/pack/plugins/start/ \
+	&& sudo rm -rf YouCompleteMe \
+	&& sudo git clone https://github.com/ycm-core/YouCompleteMe.git \
+	&& cd YouCompleteMe \
+	&& sudo git submodule update --init --recursive \
+	&& sudo python3 install.py --all
