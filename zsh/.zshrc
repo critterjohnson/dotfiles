@@ -9,21 +9,28 @@
 
 # Aliases
 # vfzf		vim $(fzf)
-# smrterm       30% vertical terminal on the right (tmux)
-# botterm       50% bottom terminal (tmux)
+# kc            kubectl
+# gm            greymatter
+
+# oh-my-zsh
+export ZSH="$(echo $HOME)/.oh-my-zsh"
+ZSH_THEME=""
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose)
+source $ZSH/oh-my-zsh.sh
 
 # aliases
 alias vfzf='vim $(fzf)'
 alias awsume='. awsume'
-alias smrterm='tmux split-window -h -p 30' # small right term
-alias botterm='tmux split-window -v' # bottom terminal
+alias kc='kubectl'
+alias gm='greymatter'
 
 # autocompletions
 autoload -Uz compinit
 compinit
-[ which kubectl &> /dev/null ] && source <(kubectl completion zsh)
-[ which kops &> /dev/null ] && source <(kops completion zsh)
-[ which greymatter &> /dev/null ] && source <(greymatter utils  completion zsh)
+which kubectl &> /dev/null && source <(kubectl completion zsh)
+which kops &> /dev/null && source <(kops completion zsh)
+which greymatter &> /dev/null && source <(greymatter utils completion zsh)
+which cue &> /dev/null && source <(cue completion zsh)
 
 # pure
 fpath+=$HOME/.zsh/pure
@@ -31,12 +38,6 @@ autoload -U promptinit; promptinit
 prompt pure
 zstyle :prompt:pure:path color white
 zstyle :prompt:pure:prompt:success color green
-
-# oh-my-zsh
-export ZSH="$(echo $HOME)/.oh-my-zsh"
-ZSH_THEME=""
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose)
-source $ZSH/oh-my-zsh.sh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -52,6 +53,16 @@ if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     bindkey "^[^[[C" forward-word
     bindkey "^[^[[D" backward-word
 fi
+
+# cool functions
+clip () {
+    if [[ ! -t 0 ]]
+        then
+                cat - | kitty +kitten clipboard
+        else
+                cat $1 | kitty +kitten clipboard
+    fi
+}
 
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'

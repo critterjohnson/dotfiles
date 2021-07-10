@@ -14,7 +14,7 @@ move-zsh:
 
 .PHONY: move-kitty
 move-kitty:
-	sudo cp -r kitty/ ~/.config/
+	sudo cp -r kitty/ ~/.config/kitty
 
 # installs everything
 .PHONY: install

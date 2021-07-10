@@ -13,6 +13,8 @@
 " <F8>          toggle 80 character colorcolumn
 " <leader>gd    :YcmCompleter GetDoc
 " <leader>gg    :GitGutterToggle
+" Ctrl + t      next tab
+" Shift + t     previous tab
 
 " kitty integration
 " <C-(h,j,k,l)> navigates between splits and kitty windows
@@ -52,6 +54,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 let g:go_fmt_autosave = 1
 let g:go_fmt_command = 'goimports'
+let g:go_def_mapping_enabled = 0
 " other go
 autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0,W8 filetype=go
 
@@ -78,22 +81,24 @@ endif
 
 " kitty
 let g:kitty_navigator_no_mappings = 1
-nnoremap <C-h> :KittyNavigateLeft <CR>
-nnoremap <C-j> :KittyNavigateDown <CR>
-nnoremap <C-k> :KittyNavigateUp <CR>
-nnoremap <C-l> :KittyNavigateRight <CR>
+nnoremap <silent> <C-h> :KittyNavigateLeft <CR>
+nnoremap <silent> <C-j> :KittyNavigateDown <CR>
+nnoremap <silent> <C-k> :KittyNavigateUp <CR>
+nnoremap <silent> <C-l> :KittyNavigateRight <CR>
 
 " markdown stuff
 autocmd BufEnter *.md setlocal textwidth=80
 
 " custom vanilla vim shortcuts
-nnoremap <F7> :!tmux split-window -h -p 30<CR><CR>
-nnoremap <F6> :set hlsearch! <CR>
-nnoremap <C-P> :FZF <CR>
 nnoremap <F3> :set wrap! <CR>
 nnoremap <F4> :set relativenumber! <CR>
-nnoremap <expr> <F5> &foldlevel ? 'zM' :'zR'
+nnoremap <F6> :set hlsearch! <CR>
+nnoremap <F7> :!tmux split-window -h -p 30<CR><CR>
 nnoremap <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+nnoremap <C-P> :FZF <CR>
+nnoremap <expr> <F5> &foldlevel ? 'zM' :'zR'
+nnoremap <silent> <C-t> :tabn <CR>
+nnoremap <silent> <S-t> :tabp <CR>
 " move by visual line (not wrapped line)
 nmap j gj
 nmap k gk
