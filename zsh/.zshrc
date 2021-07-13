@@ -54,6 +54,11 @@ if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     bindkey "^[^[[D" backward-word
 fi
 
+# kitty
+if [ "$TERM" = "xterm-kitty" ]; then
+    alias ssh="kitty +kitten ssh"
+fi
+
 # cool functions
 clip () {
     if [[ ! -t 0 ]]
@@ -67,6 +72,6 @@ clip () {
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
-export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"/Users/critterjohnson/.deno/bin":"$HOME/.cargo/bin"$PATH
+export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"/Users/critterjohnson/.deno/bin":"$HOME/.cargo/bin":$PATH
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim

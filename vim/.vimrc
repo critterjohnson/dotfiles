@@ -58,6 +58,9 @@ let g:go_def_mapping_enabled = 0
 " other go
 autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0,W8 filetype=go
 
+" rust.vim
+let g:rustfmt_autosave = 1
+
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
