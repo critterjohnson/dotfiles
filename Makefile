@@ -44,12 +44,13 @@ install-vim: move
             	--prefix=/usr/local \
 	&& make \
 	&& make install
+	rm -rf ~/.vim/swapfiles
 	sudo mkdir ~/.vim/swapfiles
 
 # installs vim plugins that require external installation / compilation
 .PHONY: install-vim-plugins
 install-vim-plugins: install-misc-tools move
-	cd ~/.vim/pack/plugins/start/YouCompleteMe && sudo python3 install.py --all
+	cd ~/.vim/pack/plugins/start/YouCompleteMe && sudo git submodule update --init --recursive && sudo python3 install.py --all
 
 .PHONY: clone-submodules
 clone-submodules:

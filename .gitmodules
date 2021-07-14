@@ -4,9 +4,6 @@
 [submodule "vim/.vim/pack/colors/start/material.vim"]
 	path = vim/.vim/pack/colors/start/material.vim
 	url = https://github.com/kaicataldo/material.vim.git
-[submodule "vim/.vim/pack/plugins/start/YouCompleteMe"]
-	path = vim/.vim/pack/plugins/start/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe.git
 [submodule "vim/.vim/pack/plugins/start/vim-cpp-modern"]
 	path = vim/.vim/pack/plugins/start/vim-cpp-modern
 	url = https://github.com/bfrg/vim-cpp-modern.git
