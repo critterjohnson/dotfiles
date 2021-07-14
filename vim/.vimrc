@@ -4,26 +4,28 @@
 
 """ Critter vim shortcuts
 " Ctrl + \	show/hide NERDTree
-" <C-P>		:FZF - fuzzy search for files
+" <C-P>		:Files - fuzzy search for files
+" <C-G>         :rg - fancy search for file
 " <F2>          :YcmCompleter GoToDefinition
 " <F3>          toggle word wrap
 " <F5>          toggle fold
 " <F6>          toggle search highlighting
 " <F7>		open new tmux pane DOESN'T DO ANYTHING ANYMORE
 " <F8>          toggle 80 character colorcolumn
-" <leader>gd    :YcmCompleter GetDoc
+" <leader>d     :YcmCompleter GetDoc
+" <leader>gb    open git blame
 " <leader>gg    :GitGutterToggle
+" <leader>gd    open git diff
 " Ctrl + t      next tab
 " Shift + t     previous tab
 
 " kitty integration
-" <C-(h,j,k,l)> navigates between splits and kitty windows
+" <C-(h|j|k|l)> navigates between splits and kitty windows
 
 " material theme
 if (has('termguicolors'))
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set background=dark
   set t_Co=256
   set termguicolors
 endif
@@ -42,7 +44,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " clangd
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath('clangd')
-nnoremap <leader>gd :YcmCompleter GetDoc <CR>
+nnoremap <leader>d :YcmCompleter GetDoc <CR>
 nnoremap <F2> :YcmCompleter GoToDefinition <CR>
 " let g:ycm_filetype_blacklist = { 'go': 1 } " let vim-go handle go
 
@@ -66,9 +68,13 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1 " requires a powerline font
 
+" vim-fugitive
+nnoremap <leader>gb :Git blame <CR>
+
 " vim-gitgutter
 let g:gitgutter_enabled = 0
 nnoremap <leader>gg :GitGutterToggle <CR>
+nnoremap <leader>gd :Gdiffsplit <CR>
 
 " a.vim
 " TODO: make a plugin to use fzf instead of a.vim to switch between files,
@@ -79,7 +85,7 @@ let g:alternateNoDefaultAlternate = 1
 " fzf
 if executable('fzf')
     set rtp+=~/.fzf
-    " let g:fzf_layout = {'down' : '~30%'}
+    let g:fzf_layout = {'down' : '~20%'}
 endif
 
 " kitty
@@ -88,17 +94,21 @@ nnoremap <silent> <C-h> :KittyNavigateLeft <CR>
 nnoremap <silent> <C-j> :KittyNavigateDown <CR>
 nnoremap <silent> <C-k> :KittyNavigateUp <CR>
 nnoremap <silent> <C-l> :KittyNavigateRight <CR>
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " markdown stuff
 autocmd BufEnter *.md setlocal textwidth=80
 
-" custom vanilla vim shortcuts
+" custom vim shortcuts
 nnoremap <F3> :set wrap! <CR>
 nnoremap <F4> :set relativenumber! <CR>
 nnoremap <F6> :set hlsearch! <CR>
 nnoremap <F7> :!tmux split-window -h -p 30<CR><CR>
 nnoremap <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
-nnoremap <C-P> :FZF <CR>
+nnoremap <C-P> :Files <CR>
+nnoremap <C-G> :Rg <CR>
 nnoremap <expr> <F5> &foldlevel ? 'zM' :'zR'
 nnoremap <silent> <C-t> :tabn <CR>
 nnoremap <silent> <S-t> :tabp <CR>
