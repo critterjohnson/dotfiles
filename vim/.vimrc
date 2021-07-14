@@ -83,10 +83,8 @@ let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,
 let g:alternateNoDefaultAlternate = 1
 
 " fzf
-if executable('fzf')
-    set rtp+=~/.fzf
-    let g:fzf_layout = {'down' : '~20%'}
-endif
+set rtp+=~/.fzf
+let g:fzf_layout = {'down' : '~20%'}
 
 " kitty
 let g:kitty_navigator_no_mappings = 1

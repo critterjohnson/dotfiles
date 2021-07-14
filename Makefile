@@ -14,7 +14,7 @@ move-zsh:
 
 .PHONY: move-kitty
 move-kitty:
-	sudo cp -r kitty/ ~/.config/kitty
+	sudo cp -r kitty/ ~/.config/
 
 # installs everything
 .PHONY: install
@@ -50,6 +50,8 @@ install-vim: move
 # installs vim plugins that require external installation / compilation
 .PHONY: install-vim-plugins
 install-vim-plugins: install-misc-tools move
+	rm -rf ~/.vim/pack/plugins/start/YouCompleteMe
+	cd ~/.vim/pack/plugins/start && sudo git clone https://github.com/ycm-core/YouCompleteMe.git
 	cd ~/.vim/pack/plugins/start/YouCompleteMe && sudo git submodule update --init --recursive && sudo python3 install.py --all
 
 .PHONY: clone-submodules
