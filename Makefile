@@ -48,10 +48,14 @@ install-vim: move
 	sudo mkdir ~/.vim/swapfiles
 
 # installs vim plugins that require external installation / compilation
+# installs YCM and vim-fugitive
 .PHONY: install-vim-plugins
 install-vim-plugins: install-misc-tools move
 	rm -rf ~/.vim/pack/plugins/start/YouCompleteMe
-	cd ~/.vim/pack/plugins/start && sudo git clone https://github.com/ycm-core/YouCompleteMe.git
+	rm -rf ~/.vim/pack/plugins/start/vim-fugitive
+	cd ~/.vim/pack/plugins/start && \
+		sudo git clone https://github.com/ycm-core/YouCompleteMe.git && \
+		sudo git clone https://github.com/tpope/vim-fugitive.git
 	cd ~/.vim/pack/plugins/start/YouCompleteMe && sudo git submodule update --init --recursive && sudo python3 install.py --all
 
 .PHONY: clone-submodules
@@ -59,7 +63,7 @@ clone-submodules:
 	git submodule update --init --recursive
 
 ifndef TOOLSDIR
-TOOLSDIR := ~ # default vim install directory is ~, clones vim to ~/vim
+TOOLSDIR := ~
 endif
 .PHONY: install-misc-tools
 install-misc-tools:
