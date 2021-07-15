@@ -15,7 +15,7 @@
 # oh-my-zsh
 export ZSH="$(echo $HOME)/.oh-my-zsh"
 ZSH_THEME=""
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose zsh-vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # aliases
@@ -32,6 +32,9 @@ which kops &> /dev/null && source <(kops completion zsh)
 which greymatter &> /dev/null && source <(greymatter utils completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
 
+# zsh-vi-mode
+zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+
 # pure
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
@@ -40,7 +43,7 @@ zstyle :prompt:pure:path color white
 zstyle :prompt:pure:prompt:success color green
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # this was replaced (see zsh-vi-mode)
 if type 'fd' > /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git' # requires https://github.com/sharkdp/fd
 else

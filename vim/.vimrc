@@ -5,7 +5,7 @@
 """ Critter vim shortcuts
 " Ctrl + \	show/hide NERDTree
 " <C-P>		:Files - fuzzy search for files
-" <C-G>         :rg - fancy search for file
+" <C-G>         :Rg - fancy search for file
 " <F2>          :YcmCompleter GoToDefinition
 " <F3>          toggle word wrap
 " <F5>          toggle fold

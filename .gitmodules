@@ -58,3 +58,6 @@
 [submodule "vim/.vim/pack/plugins/start/fzf.vim"]
 	path = vim/.vim/pack/plugins/start/fzf.vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode"]
+	path = zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode
