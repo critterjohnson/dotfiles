@@ -19,10 +19,11 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-c
 source $ZSH/oh-my-zsh.sh
 
 # aliases
-alias vfzf='vim $(fzf)'
+alias vf='vim $(fzf)'
 alias awsume='. awsume'
 alias kc='kubectl'
 alias gm='greymatter'
+alias cf='cat $(fzf)'
 
 # autocompletions
 autoload -Uz compinit
@@ -31,6 +32,7 @@ which kubectl &> /dev/null && source <(kubectl completion zsh)
 which kops &> /dev/null && source <(kops completion zsh)
 which greymatter &> /dev/null && source <(greymatter utils completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
+which lxc &> /dev/null && source <(lxc completion zsh)
 
 # zsh-vi-mode
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
