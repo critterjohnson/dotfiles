@@ -4,6 +4,8 @@ set -e
 
 ./packages.sh
 
+export PATH="$PATH:/usr/local/go/bin"
+
 git submodule update --init --recursive
 
 # setup
