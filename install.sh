@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env zsh
 
 set -e
 
@@ -27,29 +27,29 @@ git submodule update --init --recursive
             	--prefix=/usr/local
     make
     sudo make install
-    sudo rm -rf ~/.vim/swapfiles
-    sudo mkdir -p ~/.vim/swapfiles
+    sudo rm -rf ${HOME}/.vim/swapfiles
+    sudo mkdir -p ${HOME}/.vim/swapfiles
 )
 
 # fzf
 (
     cd ${HOME}/Projects
-    git clone --depth 1 https://github.com/junegunn/fzf.git  ~/.fzf || (cd ~/.fzf && git pull && cd ..)
+    git clone --depth 1 https://github.com/junegunn/fzf.git  ${HOME}/.fzf || (cd ${HOME}/.fzf && git pull && cd ..)
     cd
     printf '%s\n' y y n | sudo ./.fzf/install
-    chmod +x ~/.fzf.zsh
+    chmod +x ${HOME}/.fzf.zsh
 )
 
 # vim plugins (that are annoying and can't be just copied)
 (
-    sudo rm -rf ~/.vim/pack/plugins/start/YouCompleteMe
-    sudo rm -rf ~/.vim/pack/plugins/start/vim-fugitive
-    cd ~/.vim/pack/plugins/start
+    sudo rm -rf ${HOME}/.vim/pack/plugins/start/YouCompleteMe
+    sudo rm -rf ${HOME}/.vim/pack/plugins/start/vim-fugitive
+    cd ${HOME}/.vim/pack/plugins/start
     sudo git clone https://github.com/ycm-core/YouCompleteMe.git
     sudo git clone https://github.com/tpope/vim-fugitive.git
-    cd ~/.vim/pack/plugins/start/YouCompleteMe
+    cd ${HOME}/.vim/pack/plugins/start/YouCompleteMe
     sudo git submodule update --init --recursive
-    sudo chmod -R 777 ~/.vim
+    sudo chmod -R 777 ${HOME}/.vim
     python3 install.py --all
 )
 
