@@ -3,6 +3,7 @@
 set -e
 
 ./packages.sh
+
 export PATH="$PATH:/usr/local/go/bin"
 
 sudo git submodule update --init --recursive
