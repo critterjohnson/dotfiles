@@ -42,7 +42,7 @@ git submodule update --init --recursive
 
 # vim plugins (that are annoying and can't be just copied)
 (
-    if [ ! -d "${HOME}/.vim/pack/plugins/start" ]; then mkdir -p ${HOME}/.vim/pack/plugins/start; fi
+    if [ ! -d "${HOME}/.vim/pack/plugins/start" ]; then sudo mkdir -p ${HOME}/.vim/pack/plugins/start; fi
     sudo rm -rf ${HOME}/.vim/pack/plugins/start/YouCompleteMe
     sudo rm -rf ${HOME}/.vim/pack/plugins/start/vim-fugitive
     cd ${HOME}/.vim/pack/plugins/start
