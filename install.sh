@@ -53,7 +53,7 @@ git submodule update --init --recursive
     cd ${HOME}/.vim/pack/plugins/start/YouCompleteMe
     sudo git submodule update --init --recursive
     sudo chmod -R 777 ${HOME}/.vim
-    sudo -u nobody python3 install.py --all
+    python3 install.py --all
 )
 
 # kitty
