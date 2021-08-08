@@ -28,7 +28,7 @@ git submodule update --init --recursive
     make
     sudo make install
     sudo rm -rf ~/.vim/swapfiles
-    sudo mkdir ~/.vim/swapfiles
+    sudo mkdir -p ~/.vim/swapfiles
 )
 
 # fzf
