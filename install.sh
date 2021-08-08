@@ -6,6 +6,11 @@ set -e
 
 git submodule update --init --recursive
 
+# setup
+(
+    mkdir ${HOME}/Projects
+)
+
 # vim
 (
     cd ${HOME}/Projects
