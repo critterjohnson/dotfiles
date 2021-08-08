@@ -34,7 +34,7 @@ git submodule update --init --recursive
 # fzf
 (
     cd ${HOME}/Projects
-    git clone --depth 1 https://github.com/junegunn/fzf.git  ${HOME}/.fzf || (cd ${HOME}/.fzf && git pull && cd ..)
+    git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf || (cd ${HOME}/.fzf && git pull && cd ..)
     cd
     printf '%s\n' y y n | sudo ./.fzf/install
     chmod +x ${HOME}/.fzf.zsh
@@ -42,6 +42,7 @@ git submodule update --init --recursive
 
 # vim plugins (that are annoying and can't be just copied)
 (
+    if [ ! -d "${HOME}/.vim/pack/plugins/start" ]; then mkdir -p ${HOME}/.vim/pack/plugins/start; fi
     sudo rm -rf ${HOME}/.vim/pack/plugins/start/YouCompleteMe
     sudo rm -rf ${HOME}/.vim/pack/plugins/start/vim-fugitive
     cd ${HOME}/.vim/pack/plugins/start
