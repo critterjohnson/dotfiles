@@ -38,7 +38,7 @@ sudo git submodule update --init --recursive
     cd ${HOME}/Projects
     git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf || (cd ${HOME}/.fzf && git pull && cd ..)
     cd
-    printf '%s\n' y y n | sudo ./.fzf/install
+    printf '%s\n' y y n | ./.fzf/install
     chmod +x ${HOME}/.fzf.zsh
 )
 
