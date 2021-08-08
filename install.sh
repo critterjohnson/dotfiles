@@ -8,7 +8,7 @@ git submodule update --init --recursive
 
 # setup
 (
-    mkdir -p ${HOME}/Projects
+    if [ -d "${HOME}/Projects" ]; then mkdir ${HOME}/Projects; fi
 )
 
 # vim
