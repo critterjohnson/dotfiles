@@ -6,7 +6,7 @@ set -e
 
 export PATH="$PATH:/usr/local/go/bin"
 
-git submodule update --init --recursive
+sudo git submodule update --init --recursive
 
 # setup
 (
