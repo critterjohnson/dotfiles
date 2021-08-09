@@ -14,7 +14,7 @@ sudo apt-get update
 
 # regular packages
 sudo apt-get install -y dkms libdrm-dev default-jre nodejs npm zsh python3\
-    python3-dev build-essential git
+    python3-dev build-essential git cmake
 
 # cmake from source
 (
