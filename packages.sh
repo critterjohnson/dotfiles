@@ -18,13 +18,15 @@ sudo apt-get install -y dkms libdrm-dev default-jre nodejs npm zsh python3\
 
 # cmake from source
 (
-    git clone https://github.com/Kitware/CMake/
-    cd CMake
-    ./bootstrap
-    make
-    sudo make install
-    cd ..
-    rm -rf CMake
+    if [ $(cmake --version | head -n 1 | tr -d -c 0-9) < 3140 ]; then
+        git clone https://github.com/Kitware/CMake/
+        cd CMake
+        ./bootstrap
+        make
+        sudo make install
+        cd ..
+        rm -rf CMake
+    fi
 )
 
 # ripgrep
