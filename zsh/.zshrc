@@ -30,9 +30,9 @@ autoload -Uz compinit
 compinit
 which kubectl &> /dev/null && source <(kubectl completion zsh)
 which kops &> /dev/null && source <(kops completion zsh)
-which greymatter &> /dev/null && source <(greymatter utils completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
 which lxc &> /dev/null && source <(lxc completion zsh)
+complete -C '/usr/local/bin/aws_completer' aws
 
 # zsh-vi-mode
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
@@ -77,6 +77,6 @@ clip () {
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
-export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"/Users/critterjohnson/.deno/bin":"$HOME/.cargo/bin":$PATH
+export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin":$PATH
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
