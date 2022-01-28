@@ -61,3 +61,9 @@
 [submodule "zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule "vim/.vim/pack/plugins/start/vim-tmux-navigator"]
+	path = vim/.vim/pack/plugins/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/.vim/pack/plugins/start/tmuxline.vim"]
+	path = vim/.vim/pack/plugins/start/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git

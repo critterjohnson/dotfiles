@@ -62,17 +62,22 @@ fi
 # kitty
 if [ "$TERM" = "xterm-kitty" ]; then
     alias ssh="kitty +kitten ssh"
-fi
 
-# cool functions
-clip () {
-    if [[ ! -t 0 ]]
-        then
-                cat - | kitty +kitten clipboard
-        else
-                cat $1 | kitty +kitten clipboard
+    # cool functions
+    clip () {
+        if [[ ! -t 0 ]]
+            then
+                    cat - | kitty +kitten clipboard
+            else
+                    cat $1 | kitty +kitten clipboard
+        fi
+    }
+
+else
+    if [[ ! -n "$TMUX" ]]; then
+        tmux -2
     fi
-}
+fi
 
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'

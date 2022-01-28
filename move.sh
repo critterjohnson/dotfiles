@@ -11,3 +11,6 @@ sudo cp -r ./zsh/.zsh ~
 # vim
 sudo cp ./vim/.vimrc ~/.vimrc
 sudo cp -r ./vim/.vim ~
+
+# tmux
+sudo cp ./tmux/.tmux.conf ~/.tmux.conf
