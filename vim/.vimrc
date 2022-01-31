@@ -17,6 +17,7 @@
 " <leader>gg    :GitGutterToggle
 " <leader>gd    open git diff
 " <leader>a     switch back and forth from header file
+" <leader>t     :TagBarToggle
 " Ctrl + t      next tab
 " Shift + t     previous tab
 
@@ -26,14 +27,14 @@
 " tmux integration (if not using kitty)
 " <C-(h|j|k|l)> navigates between splits and tmux panes
 
-" material theme
+" theme
 if (has('termguicolors'))
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set t_Co=256
   set termguicolors
 endif
-colorscheme material
+colo nord " trying out this colorscheme
 
 " NERDTree
 nnoremap <silent> <C-\> :NERDTreeToggle <CR>
@@ -149,6 +150,9 @@ nmap k gk
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+" tagbar
+nnoremap <silent> <leader>t :TagbarToggle <CR>
+
 " misc settings
 set number
 set mouse=a
@@ -182,3 +186,5 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 augroup END
 
+" run these last
+highlight LineNr guibg=black

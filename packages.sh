@@ -14,7 +14,7 @@ sudo apt-get update
 
 # regular packages
 sudo apt-get install -y dkms libdrm-dev default-jre nodejs npm zsh python3\
-    python3-dev build-essential git cmake gcc-8
+    python3-dev build-essential git cmake gcc-8 exuberant-ctags
 
 sudo cp /usr/bin/gcc-8 /usr/bin/gcc
 

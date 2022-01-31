@@ -67,3 +67,9 @@
 [submodule "vim/.vim/pack/plugins/start/tmuxline.vim"]
 	path = vim/.vim/pack/plugins/start/tmuxline.vim
 	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule "vim/.vim/pack/plugins/start/nord-vim"]
+	path = vim/.vim/pack/plugins/start/nord-vim
+	url = git@github.com:arcticicestudio/nord-vim.git
+[submodule "vim/.vim/pack/plugins/start/tagbar"]
+	path = vim/.vim/pack/plugins/start/tagbar
+	url = git@github.com:preservim/tagbar.git
