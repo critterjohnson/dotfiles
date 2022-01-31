@@ -73,3 +73,12 @@
 [submodule "vim/.vim/pack/plugins/start/tagbar"]
 	path = vim/.vim/pack/plugins/start/tagbar
 	url = git@github.com:preservim/tagbar.git
+[submodule "vim/.vim/pack/plugins/start/typescript-vim"]
+        path = vim/.vim/pack/plugins/start/typescript-vim
+        url = git@github.com:leafgarland/typescript-vim.git
+[submodule "vim/.vim/pack/plugins/start/vim-hcl"]
+        path = vim/.vim/pack/plugins/start/vim-hcl
+        url = git@github.com:jvirtanen/vim-hcl.git
+[submodule "vim/.vim/pack/plugins/start/vim-jsx-pretty"]
+	path = vim/.vim/pack/plugins/start/vim-jsx-pretty
+	url = git@github.com:MaxMEllon/vim-jsx-pretty.git
