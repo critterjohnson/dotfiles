@@ -97,6 +97,7 @@ let g:fzf_layout = {'down' : '~20%'}
 " kitty
 if $TERM == "xterm-kitty"
     let g:kitty_navigator_no_mappings = 1
+    let g:tmux_navigator_no_mappings = 1 " disable tmux_navigator mappings so kitty navigation mappings work " disable tmux_navigator mappings so kitty navigation mappings work
     nnoremap <silent> <C-h> :KittyNavigateLeft <CR>
     nnoremap <silent> <C-j> :KittyNavigateDown <CR>
     nnoremap <silent> <C-k> :KittyNavigateUp <CR>
