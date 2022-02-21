@@ -127,7 +127,7 @@ if $TERM == "screen-256color"
 endif
 
 " markdown stuff
-autocmd BufEnter *.md setlocal textwidth=80
+autocmd BufEnter *.md setlocal textwidth=80 tabstop=2 shiftwidth=2
 
 " custom vim shortcuts
 nnoremap <silent> <F3> :set wrap! <CR>
