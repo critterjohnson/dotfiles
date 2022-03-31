@@ -79,9 +79,29 @@ else
     fi
 fi
 
+# functions
+flush_ipts () {
+    for ipt in iptables iptables-legacy ip6tables ip6tables-legacy; do
+        sudo $ipt --flush
+        sudo $ipt --flush -t nat
+        sudo $ipt --delete-chain
+        sudo $ipt --delete-chain -t nat
+        sudo $ipt -P FORWARD ACCEPT
+        sudo $ipt -P INPUT ACCEPT
+        sudo $ipt -P OUTPUT ACCEPT
+    done
+}
+
+
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
 export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin":$PATH
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
+export LD_LIBRARY_PATH="$(go env GOPATH)/deps/dqlite/.libs/:$(go env GOPATH)/deps/raft/.libs/:${LD_LIBRARY_PATH}"
+# lxd dev
+export CGO_CFLAGS="-I/home/critterjohnson/go/deps/raft/include/ -I/home/critterjohnson/go/deps/dqlite/include/"
+export CGO_LDFLAGS="-L/home/critterjohnson/go/deps/raft/.libs -L/home/critterjohnson/go/deps/dqlite/.libs/"
+export LD_LIBRARY_PATH="/home/critterjohnson/go/deps/raft/.libs/:/home/critterjohnson/go/deps/dqlite/.libs/"
+export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
