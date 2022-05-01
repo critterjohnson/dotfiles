@@ -6,10 +6,10 @@ sudo apt-get update
 
 # go
 (
-    sudo wget 'https://golang.org/dl/go1.16.7.linux-amd64.tar.gz'
+    sudo wget 'https://golang.org/dl/go1.18.1.linux-amd64.tar.gz'
     sudo rm -rf /usr/local/go
-    sudo tar -C /usr/local -xzf 'go1.16.7.linux-amd64.tar.gz'
-    sudo rm -rf 'go1.16.7.linux-amd64.tar.gz'
+    sudo tar -C /usr/local -xzf 'go1.18.1.linux-amd64.tar.gz'
+    sudo rm -rf 'go1.18.1.linux-amd64.tar.gz'
 )
 
 # regular packages
