@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # kitty
 sudo cp -r kitty/ ~/.config/
 

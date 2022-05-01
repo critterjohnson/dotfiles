@@ -18,6 +18,9 @@ ZSH_THEME=""
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose zsh-vi-mode)
 source $ZSH/oh-my-zsh.sh
 
+# use ~/.profile as place to store non-synced zsh configurations
+source ~/.profile
+
 # aliases
 alias vf='vim $(fzf)'
 alias awsume='. awsume'
