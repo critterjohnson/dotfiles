@@ -34,7 +34,7 @@ compinit
 which kubectl &> /dev/null && source <(kubectl completion zsh)
 which kops &> /dev/null && source <(kops completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
-which lxc &> /dev/null && source <(lxc completion zsh)
+#which lxc &> /dev/null && source <(lxc completion zsh)
 complete -C '/usr/local/bin/aws_completer' aws
 
 # zsh-vi-mode
