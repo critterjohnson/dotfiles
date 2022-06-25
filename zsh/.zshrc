@@ -75,10 +75,10 @@ if [ "$TERM" = "xterm-kitty" ]; then
                     cat $1 | kitty +kitten clipboard
         fi
     }
-fi
-
-if [[ ! -n "$TMUX" ]]; then
-    tmux -2
+else
+    if [[ ! -n "$TMUX" ]]; then
+        tmux -2
+    fi
 fi
 
 # functions

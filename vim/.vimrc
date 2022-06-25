@@ -34,10 +34,11 @@ if (has('termguicolors'))
   set t_Co=256
   set termguicolors
 endif
-colo nord " trying out this colorscheme
+"colo nord " trying out this colorscheme
+colo moonfly
 
 " NERDTree
-nnoremap <silent> <C-\> :NERDTreeToggle <CR>
+nnoremap <C-\> :NERDTreeToggle <CR>
 autocmd BufWinEnter * silent NERDTreeMirror " copy this NERDTree when a new window (tab) opens
 " open NERDTree only if vim was opened with no arguments or data in stdin
 autocmd StdinReadPre * let s:std_in=1
@@ -65,6 +66,9 @@ let g:go_fmt_command = 'goimports'
 let g:go_def_mapping_enabled = 0
 " other go
 autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0,W8 filetype=go
+
+" vim-delve
+au VimEnter * let g:delve_use_vimux = 1 " have to do this for some reason
 
 " rust.vim
 let g:rustfmt_autosave = 1
@@ -154,6 +158,10 @@ nmap k gk
 
 " tagbar
 nnoremap <silent> <leader>t :TagbarToggle <CR>
+
+" vim-mergetool
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
 
 " misc settings
 set number
