@@ -68,7 +68,8 @@ let g:go_def_mapping_enabled = 0
 autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0,W8 filetype=go
 
 " vim-delve
-au VimEnter * let g:delve_use_vimux = 1 " have to do this for some reason
+"au VimEnter * let g:delve_use_vimux = 1 " have to do this for some reason
+let g:delve_use_kitty = 1
 
 " rust.vim
 let g:rustfmt_autosave = 1
