@@ -94,3 +94,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-kitty-runner"]
 	path = vim/.vim/pack/plugins/start/vim-kitty-runner
 	url = git@github.com:critterjohnson/vim-kitty-runner.git
+[submodule "vim/.vim/pack/plugins/start/vim-dlv"]
+	path = vim/.vim/pack/plugins/start/vim-dlv
+	url = git@github.com:critterjohnson/vim-delve.git
