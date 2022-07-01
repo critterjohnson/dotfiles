@@ -3,14 +3,14 @@
 " directly
 
 """ Critter vim shortcuts
-" Ctrl + \	show/hide NERDTree
-" <C-P>		:Files - fuzzy search for files
+" Ctrl + \      show/hide NERDTree
+" <C-P>         :Files - fuzzy search for files
 " <C-G>         :Rg - fancy search for file
 " <F2>          :YcmCompleter GoToDefinition
 " <F3>          toggle word wrap
 " <F5>          toggle fold
 " <F6>          toggle search highlighting
-" <F7>		open new tmux pane DOESN'T DO ANYTHING ANYMORE
+" <F7>          open new tmux pane DOESN'T DO ANYTHING ANYMORE
 " <F8>          toggle 80 character colorcolumn
 " <leader>d     :YcmCompleter GetDoc
 " <leader>gb    open git blame

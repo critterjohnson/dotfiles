@@ -11,6 +11,7 @@
 # vfzf		vim $(fzf)
 # kc            kubectl
 # gm            greymatter
+# bf            bat $(fzf)
 
 # oh-my-zsh
 export ZSH="$(echo $HOME)/.oh-my-zsh"
@@ -26,7 +27,7 @@ alias vf='vim $(fzf)'
 alias awsume='. awsume'
 alias kc='kubectl'
 alias gm='greymatter'
-alias cf='cat $(fzf)'
+alias bf='bat $(fzf)'
 
 # autocompletions
 autoload -Uz compinit
