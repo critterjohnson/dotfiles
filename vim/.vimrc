@@ -70,6 +70,8 @@ autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=8
 " vim-delve
 "au VimEnter * let g:delve_use_vimux = 1 " have to do this for some reason
 let g:delve_use_kitty = 1
+autocmd BufEnter *.go nnoremap <silent> <leader>b :DlvToggleBreakpoint <CR>
+autocmd BufEnter *.go nnoremap <silent> <leader>c :DlvConnect :2345 <CR>
 
 " rust.vim
 let g:rustfmt_autosave = 1
