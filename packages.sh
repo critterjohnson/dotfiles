@@ -37,3 +37,9 @@ sudo cp /usr/bin/gcc-8 /usr/bin/gcc
     sudo dpkg -i 'ripgrep_12.1.1_amd64.deb'
     rm 'ripgrep_12.1.1_amd64.deb'
 )
+
+# ranger
+pip3 install ranger-fm
+
+# fd-find
+sudo apt install fd-find
