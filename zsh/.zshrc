@@ -95,6 +95,10 @@ flush_ipts () {
     done
 }
 
+ports () {
+	netstat -ltnp 2> /dev/null | awk '!/^[AP]/ {print $7"\t\t"$4}' | grep -v '^-' | sort
+}
+
 
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
