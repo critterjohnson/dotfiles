@@ -26,7 +26,8 @@ git submodule update --init --recursive
             	--enable-perlinterp=yes \
             	--enable-gui=gtk2 \
             	--enable-cscope \
-            	--prefix=/usr/local
+            	--prefix=/usr/local \
+                --enable-clipboard
     make
     sudo make install
     sudo rm -rf ${HOME}/.vim/swapfiles
