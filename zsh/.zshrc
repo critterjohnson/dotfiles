@@ -96,7 +96,11 @@ flush_ipts () {
 }
 
 ports () {
-	netstat -ltnp 2> /dev/null | awk '!/^[AP]/ {print $7"\t\t"$4}' | grep -v '^-' | sort
+        netstat -ltnp 2> /dev/null | awk '!/^[AP]/ {print $7"\t\t"$4}' | grep -v '^-' | sort
+}
+
+lxcls () {
+        lxc ls -f compact -c ns4
 }
 
 
