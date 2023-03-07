@@ -16,3 +16,6 @@ sudo cp -r ./vim/.vim ~
 
 # tmux
 sudo cp ./tmux/.tmux.conf ~/.tmux.conf
+
+# gdb
+sudo cp ./gdb/.gdbinit ~/.gdbinit

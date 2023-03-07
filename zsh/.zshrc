@@ -1,5 +1,5 @@
 # Critter's .zshrc
-# should be edited in the dotfiles repo and moved using `make`, not edited
+# should be edited in the dotfiles repo and moved using `move.sh`, not edited
 # directly
 
 # Keyboard shortcuts
@@ -28,11 +28,12 @@ alias awsume='. awsume'
 alias kc='kubectl'
 alias gm='greymatter'
 alias bf='bat $(fzf)'
+alias gdb='/usr/local/bin/gdb'
 
 # autocompletions
 autoload -Uz compinit
 compinit
-which kubectl &> /dev/null && source <(kubectl completion zsh)
+which kubectl &> /dev/null && source <(kubectl completion zsh &> /dev/null)
 which kops &> /dev/null && source <(kops completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
 #which lxc &> /dev/null && source <(lxc completion zsh)
@@ -107,7 +108,7 @@ lxcls () {
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
-export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":$PATH
+export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":"$HOME/.r2env/versions/radare2@git/bin":$PATH
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
 export LD_LIBRARY_PATH="$(go env GOPATH)/deps/dqlite/.libs/:$(go env GOPATH)/deps/raft/.libs/:${LD_LIBRARY_PATH}"
@@ -116,3 +117,4 @@ export CGO_CFLAGS="-I/home/critterjohnson/go/deps/raft/include/ -I/home/critterj
 export CGO_LDFLAGS="-L/home/critterjohnson/go/deps/raft/.libs -L/home/critterjohnson/go/deps/dqlite/.libs/"
 export LD_LIBRARY_PATH="/home/critterjohnson/go/deps/raft/.libs/:/home/critterjohnson/go/deps/dqlite/.libs/"
 export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
+
