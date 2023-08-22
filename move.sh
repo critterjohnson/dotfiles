@@ -3,7 +3,7 @@
 set -ex
 
 # kitty
-sudo cp -r kitty/ ~/.config/
+sudo cp -r kitty/ ~/.config/kitty
 
 # zsh
 sudo cp ./zsh/.zshrc ~/.zshrc

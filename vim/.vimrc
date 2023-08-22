@@ -141,7 +141,7 @@ autocmd BufEnter *.md setlocal textwidth=80 tabstop=2 shiftwidth=2
 nnoremap <silent> <F3> :set wrap! <CR>
 nnoremap <silent> <F4> :set relativenumber! <CR>
 nnoremap <silent> <F6> :set hlsearch! <CR>
-nnoremap <silent> <F7> :!tmux split-window -h -p 30<CR><CR>
+" nnoremap <silent> <F7> :!tmux split-window -h -p 30<CR><CR>
 nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
 nnoremap <silent> <C-P> :Files <CR>
 nnoremap <silent> <C-G> :Rg <CR>

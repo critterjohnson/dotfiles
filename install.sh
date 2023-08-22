@@ -2,7 +2,7 @@
 
 set -e
 
-./packages.sh
+# ./packages.sh
 
 export PATH="$PATH:/usr/local/go/bin"
 
@@ -58,8 +58,8 @@ git submodule update --init --recursive
 )
 
 # kitty
-(
-    sudo curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-)
+#(
+  #  sudo curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+#)
 
 ./move.sh
