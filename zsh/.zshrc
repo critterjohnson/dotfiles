@@ -117,4 +117,5 @@ export CGO_CFLAGS="-I/home/critterjohnson/go/deps/raft/include/ -I/home/critterj
 export CGO_LDFLAGS="-L/home/critterjohnson/go/deps/raft/.libs -L/home/critterjohnson/go/deps/dqlite/.libs/"
 export LD_LIBRARY_PATH="/home/critterjohnson/go/deps/raft/.libs/:/home/critterjohnson/go/deps/dqlite/.libs/"
 export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
-
+export LLVM_DIR=/opt/homebrew/opt/llvm@14/lib/cmake
+export TIPCLANG=/opt/homebrew/opt/llvm@14/bin/clang
