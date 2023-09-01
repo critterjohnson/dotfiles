@@ -97,3 +97,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-dlv"]
 	path = vim/.vim/pack/plugins/start/vim-dlv
 	url = git@github.com:critterjohnson/vim-delve.git
+[submodule "vim/.vim/pack/plugins/start/vim-antlr"]
+	path = vim/.vim/pack/plugins/start/vim-antlr
+	url = git@github.com:dylon/vim-antlr.git
