@@ -53,7 +53,7 @@ let g:ycm_clangd_binary_path = exepath('clangd')
 nnoremap <silent> <leader>d :YcmCompleter GetDoc <CR>
 nnoremap <silent> <F2> :YcmCompleter GoToDefinition <CR>
 " let g:ycm_filetype_blacklist = { 'go': 1 } " let vim-go handle go
-let g:ycm_filetype_blacklist = { 'cpp': 1, 'h': 1, 'c': 1 } " CS 2150
+" let g:ycm_filetype_blacklist = { 'cpp': 1, 'h': 1, 'c': 1 } " CS 2150
 
 " vim-go
 let g:go_highlight_fields = 1
