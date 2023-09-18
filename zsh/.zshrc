@@ -29,7 +29,7 @@ alias kc='kubectl'
 alias gm='greymatter'
 alias bf='bat $(fzf)'
 alias gdb='/usr/local/bin/gdb'
-alias 'git commit -m'='git commit -S -m'
+alias gcm='git commit -S -m'
 
 # autocompletions
 autoload -Uz compinit
