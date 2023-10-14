@@ -46,15 +46,15 @@ git submodule update --init --recursive
 # vim plugins (that are annoying and can't be just copied)
 (
     if [ ! -d "${HOME}/.vim/pack/plugins/start" ]; then sudo mkdir -p ${HOME}/.vim/pack/plugins/start; fi
-    sudo rm -rf ${HOME}/.vim/pack/plugins/start/YouCompleteMe
+    #sudo rm -rf ${HOME}/.vim/pack/plugins/start/YouCompleteMe
     sudo rm -rf ${HOME}/.vim/pack/plugins/start/vim-fugitive
     cd ${HOME}/.vim/pack/plugins/start
-    sudo git clone https://github.com/ycm-core/YouCompleteMe.git
+    #sudo git clone https://github.com/ycm-core/YouCompleteMe.git
     sudo git clone https://github.com/tpope/vim-fugitive.git
-    cd ${HOME}/.vim/pack/plugins/start/YouCompleteMe
-    sudo git submodule update --init --recursive
-    sudo chmod -R 777 ${HOME}/.vim
-    python3 install.py --all
+    #cd ${HOME}/.vim/pack/plugins/start/YouCompleteMe
+    #sudo git submodule update --init --recursive
+    #sudo chmod -R 777 ${HOME}/.vim
+    #python3 install.py --all
 )
 
 # kitty

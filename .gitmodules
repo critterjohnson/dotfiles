@@ -100,3 +100,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-antlr"]
 	path = vim/.vim/pack/plugins/start/vim-antlr
 	url = git@github.com:dylon/vim-antlr.git
+[submodule "vim/.vim/pack/plugins/start/copilot.vim"]
+	path = vim/.vim/pack/plugins/start/copilot.vim
+	url = https://github.com/github/copilot.vim

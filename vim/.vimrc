@@ -1,18 +1,18 @@
 " Critter's .vimrc
-" should be edited in the dotfiles repo and moved using `make`, not edited
+" should be edited in the dotfiles repo and moved using ./move.sh, not edited
 " directly
 
 """ Critter vim shortcuts
 " Ctrl + \      show/hide NERDTree
 " <C-P>         :Files - fuzzy search for files
 " <C-G>         :Rg - fancy search for file
-" <F2>          :YcmCompleter GoToDefinition
+" <F2>          go to definition
 " <F3>          toggle word wrap
 " <F5>          toggle fold
 " <F6>          toggle search highlighting
 " <F7>          open new tmux pane DOESN'T DO ANYTHING ANYMORE
 " <F8>          toggle 80 character colorcolumn
-" <leader>d     :YcmCompleter GetDoc
+" <leader>d     get documentation
 " <leader>gb    open git blame
 " <leader>gg    :GitGutterToggle
 " <leader>gd    open git diff
@@ -46,10 +46,17 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 let g:NERDTreeShowHidden = 1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif " close NERDTree if it's the last window left
 
+" copilot
+let g:copilot_enabled = 'false'
+nnoremap <silent> <leader>cp :Copilot enable <CR>
+imap <silent><script><expr> <C-TAB> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 " YouCompleteMe
 " clangd
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath('clangd')
+let g:ycm_auto_hover = ''
 nnoremap <silent> <leader>d :YcmCompleter GetDoc <CR>
 nnoremap <silent> <F2> :YcmCompleter GoToDefinition <CR>
 " let g:ycm_filetype_blacklist = { 'go': 1 } " let vim-go handle go
