@@ -103,3 +103,6 @@
 [submodule "vim/.vim/pack/plugins/start/copilot.vim"]
 	path = vim/.vim/pack/plugins/start/copilot.vim
 	url = https://github.com/github/copilot.vim
+[submodule "vim/.vim/pack/plugins/start/vim-llvm"]
+	path = vim/.vim/pack/plugins/start/vim-llvm
+	url = git@github.com:rhysd/vim-llvm.git

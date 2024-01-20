@@ -105,12 +105,12 @@ lxcls () {
         lxc ls -f compact -c ns4
 }
 
-eval $(thefuck --alias)
-
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
+export PATH=/opt/homebrew/bin:$PATH
 export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":"$HOME/.r2env/versions/radare2@git/bin":"/Applications/CMake.app/Contents/bin":$PATH
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
 export LD_LIBRARY_PATH="$(go env GOPATH)/deps/dqlite/.libs/:$(go env GOPATH)/deps/raft/.libs/:${LD_LIBRARY_PATH}"
@@ -121,3 +121,6 @@ export LD_LIBRARY_PATH="/home/critterjohnson/go/deps/raft/.libs/:/home/critterjo
 export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
 export LLVM_DIR=/opt/homebrew/opt/llvm@14/lib/cmake
 export TIPCLANG=/opt/homebrew/opt/llvm@14/bin/clang
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+eval $(thefuck --alias)
