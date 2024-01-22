@@ -2,8 +2,8 @@
 
 set -ex
 
-# kitty
-sudo cp -r kitty/ ~/.config/kitty
+# kitty, nvim
+sudo cp -r .config/* ~/.config
 
 # zsh
 sudo cp ./zsh/.zshrc ~/.zshrc
