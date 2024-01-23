@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.profile
 
 # aliases
+alias vim='nvim'
 alias vf='vim $(fzf)'
 alias awsume='. awsume'
 alias kc='kubectl'

@@ -23,13 +23,22 @@ require("lazy").setup({
     { "hrsh7th/nvim-cmp" },
     { "hrsh7th/cmp-vsnip" },
     { "hrsh7th/vim-vsnip" },
+    { "hrsh7th/cmp-cmdline" },
     { "itchyny/lightline.vim" },
     { "junegunn/fzf" },
     { "junegunn/fzf.vim" },
     { "preservim/tagbar" },
 })
 
+vim.cmd [[let g:lightline = { 'colorscheme': 'moonfly' }]]
 vim.cmd [[colorscheme moonfly]]
+
+-- vim options
+vim.cmd [[set splitbelow]]
+vim.cmd [[set splitright]]
+vim.cmd [[set expandtab]]
+vim.cmd [[set shiftwidth=4]]
+vim.cmd [[set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<]]
 
 -- shortcuts
 vim.api.nvim_set_keymap('n', '<F3>', ':set wrap! <CR>', { noremap = true, silent = true })
@@ -128,6 +137,21 @@ cmp.setup.cmdline(':', {
     { name = 'path' }
   }, {
     { name = 'cmdline' }
+  })
+})
+
+-- `:` cmdline setup
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    {
+      name = 'cmdline',
+      option = {
+        ignore_cmds = { 'Man', '!' }
+      }
+    }
   })
 })
 
