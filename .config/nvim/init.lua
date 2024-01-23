@@ -28,6 +28,7 @@ require("lazy").setup({
     { "junegunn/fzf" },
     { "junegunn/fzf.vim" },
     { "preservim/tagbar" },
+    { "preservim/nerdcommenter" },
 })
 
 vim.cmd [[let g:lightline = { 'colorscheme': 'moonfly' }]]
