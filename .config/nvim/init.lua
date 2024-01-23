@@ -29,6 +29,7 @@ require("lazy").setup({
     { "junegunn/fzf.vim" },
     { "preservim/tagbar" },
     { "preservim/nerdcommenter" },
+    { "jjo/vim-cue" },
 })
 
 vim.cmd [[let g:lightline = { 'colorscheme': 'moonfly' }]]
@@ -158,6 +159,22 @@ cmp.setup.cmdline(':', {
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    --vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>d', vim.lsp.buf.hover, { buffer = 0 })
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<F2>', vim.lsp.buf.definition, {noremap = true, silent = false })
+  end,
+})
 
 ---- language servers
 local lspconfig = require('lspconfig')
