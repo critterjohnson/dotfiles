@@ -180,6 +180,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {}
 lspconfig.gopls.setup {}
+lspconfig.pyright.setup {}
 
 -- run last
 vim.cmd [[highlight LineNr guibg=black]]
