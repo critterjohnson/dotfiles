@@ -1,5 +1,5 @@
 # Critter's .zshrc
-# should be edited in the dotfiles repo and moved using `make`, not edited
+# should be edited in the dotfiles repo and moved using `move.sh`, not edited
 # directly
 
 # Keyboard shortcuts
@@ -11,6 +11,7 @@
 # vfzf		vim $(fzf)
 # kc            kubectl
 # gm            greymatter
+# bf            bat $(fzf)
 
 # oh-my-zsh
 export ZSH="$(echo $HOME)/.oh-my-zsh"
@@ -18,21 +19,33 @@ ZSH_THEME=""
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-nvm docker docker-compose zsh-vi-mode)
 source $ZSH/oh-my-zsh.sh
 
+# use ~/.profile as place to store non-synced zsh configurations
+source ~/.profile
+
+# set up PATH first
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":"$HOME/.r2env/versions/radare2@git/bin":"/Applications/CMake.app/Contents/bin":$PATH
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
 # aliases
+alias vim='nvim'
 alias vf='vim $(fzf)'
 alias awsume='. awsume'
 alias kc='kubectl'
-alias gm='greymatter'
-alias cf='cat $(fzf)'
+#alias gm='greymatter'
+alias gm='~/Projects/cli/bin/greymatter'
+alias bf='bat $(fzf)'
+alias gdb='/usr/local/bin/gdb'
+alias gcm='git commit -S -m'
 
 # autocompletions
 autoload -Uz compinit
 compinit
 which kubectl &> /dev/null && source <(kubectl completion zsh)
 which kops &> /dev/null && source <(kops completion zsh)
-which greymatter &> /dev/null && source <(greymatter utils completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
-which lxc &> /dev/null && source <(lxc completion zsh)
+#which lxc &> /dev/null && source <(lxc completion zsh)
+complete -C '/usr/local/bin/aws_completer' aws
 
 # zsh-vi-mode
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
@@ -49,7 +62,8 @@ zstyle :prompt:pure:prompt:success color green
 if type 'fd' > /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git' # requires https://github.com/sharkdp/fd
 else
-  export FZF_DEFAULT_COMMAD='find -L'
+  #export FZF_DEFAULT_COMMAND='find -L'
+  export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
@@ -62,21 +76,56 @@ fi
 # kitty
 if [ "$TERM" = "xterm-kitty" ]; then
     alias ssh="kitty +kitten ssh"
+
+    # cool functions
+    clip () {
+        if [[ ! -t 0 ]]
+            then
+                    cat - | kitty +kitten clipboard
+            else
+                    cat $1 | kitty +kitten clipboard
+        fi
+    }
+else
+    if [[ ! -n "$TMUX" ]]; then
+        tmux -2
+    fi
 fi
 
-# cool functions
-clip () {
-    if [[ ! -t 0 ]]
-        then
-                cat - | kitty +kitten clipboard
-        else
-                cat $1 | kitty +kitten clipboard
-    fi
+# functions
+flush_ipts () {
+    for ipt in iptables iptables-legacy ip6tables ip6tables-legacy; do
+        sudo $ipt --flush
+        sudo $ipt --flush -t nat
+        sudo $ipt --delete-chain
+        sudo $ipt --delete-chain -t nat
+        sudo $ipt -P FORWARD ACCEPT
+        sudo $ipt -P INPUT ACCEPT
+        sudo $ipt -P OUTPUT ACCEPT
+    done
+}
+
+ports () {
+        netstat -ltnp 2> /dev/null | awk '!/^[AP]/ {print $7"\t\t"$4}' | grep -v '^-' | sort
+}
+
+lxcls () {
+        lxc ls -f compact -c ns4
 }
 
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
-export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"/Users/critterjohnson/.deno/bin":"$HOME/.cargo/bin":$PATH
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
+export LD_LIBRARY_PATH="$(go env GOPATH)/deps/dqlite/.libs/:$(go env GOPATH)/deps/raft/.libs/:${LD_LIBRARY_PATH}"
+# lxd dev
+export CGO_CFLAGS="-I/home/critterjohnson/go/deps/raft/include/ -I/home/critterjohnson/go/deps/dqlite/include/"
+export CGO_LDFLAGS="-L/home/critterjohnson/go/deps/raft/.libs -L/home/critterjohnson/go/deps/dqlite/.libs/"
+export LD_LIBRARY_PATH="/home/critterjohnson/go/deps/raft/.libs/:/home/critterjohnson/go/deps/dqlite/.libs/"
+export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
+export LLVM_DIR=/opt/homebrew/opt/llvm@14/lib/cmake
+export TIPCLANG=/opt/homebrew/opt/llvm@14/bin/clang
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+
+eval $(thefuck --alias)

@@ -1,0 +1,71 @@
+" Critter's minimal .vimrc
+" used when sshd into other machines or other times where plugins become
+" difficult
+
+""" Critter vim shortcuts
+" <F3>          toggle word wrap
+" <F5>          toggle fold
+" <F6>          toggle search highlighting
+" <F8>          toggle 80 character colorcolumn
+" Ctrl + t      next tab
+" Shift + t     previous tab
+
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+    else
+        let &t_SI = "\e[5 q"
+        let &t_EI = "\e[2 q"
+endif
+
+" markdown stuff
+autocmd BufEnter *.md setlocal textwidth=80 tabstop=2 shiftwidth=2
+
+" custom vim shortcuts
+nnoremap <silent> <F3> :set wrap! <CR>
+nnoremap <silent> <F4> :set relativenumber! <CR>
+nnoremap <silent> <F6> :set hlsearch! <CR>
+nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+nnoremap <silent> <expr> <F5> &foldlevel ? 'zM' :'zR'
+nnoremap <silent> <C-t> :tabn <CR>
+nnoremap <silent> <S-t> :tabp <CR>
+" move by visual line (not wrapped line)
+nmap j gj
+nmap k gk
+
+" line number stuff
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+" misc settings
+set number
+set mouse=a
+filetype plugin indent on
+syntax on
+set hidden
+set backspace=indent,eol,start
+set hlsearch
+set splitbelow
+set splitright
+set fillchars+=vert:\ 
+set expandtab
+set autoindent
+set smartindent
+set shiftwidth=4
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+set foldmethod=syntax
+set foldlevel=99
+set directory=$HOME/.vim/swapfiles//
+set incsearch
+let &t_ut=''
+
+augroup vimrcEx
+  au!
+  autocmd FileType text setlocal textwidth=78
+augroup END
+
+" run these last
+highlight LineNr guibg=black

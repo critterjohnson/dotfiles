@@ -61,3 +61,48 @@
 [submodule "zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode"]
 	path = zsh/.oh-my-zsh/custom/plugins/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode
+[submodule "vim/.vim/pack/plugins/start/vim-tmux-navigator"]
+	path = vim/.vim/pack/plugins/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/.vim/pack/plugins/start/tmuxline.vim"]
+	path = vim/.vim/pack/plugins/start/tmuxline.vim
+	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule "vim/.vim/pack/plugins/start/nord-vim"]
+	path = vim/.vim/pack/plugins/start/nord-vim
+	url = git@github.com:arcticicestudio/nord-vim.git
+[submodule "vim/.vim/pack/plugins/start/tagbar"]
+	path = vim/.vim/pack/plugins/start/tagbar
+	url = git@github.com:preservim/tagbar.git
+[submodule "vim/.vim/pack/plugins/start/typescript-vim"]
+        path = vim/.vim/pack/plugins/start/typescript-vim
+        url = git@github.com:leafgarland/typescript-vim.git
+[submodule "vim/.vim/pack/plugins/start/vim-hcl"]
+        path = vim/.vim/pack/plugins/start/vim-hcl
+        url = git@github.com:jvirtanen/vim-hcl.git
+[submodule "vim/.vim/pack/plugins/start/vim-jsx-pretty"]
+	path = vim/.vim/pack/plugins/start/vim-jsx-pretty
+	url = git@github.com:MaxMEllon/vim-jsx-pretty.git
+[submodule "vim/.vim/pack/plugins/start/vimux"]
+	path = vim/.vim/pack/plugins/start/vimux
+	url = git@github.com:preservim/vimux.git
+[submodule "vim/.vim/pack/plugins/start/vim-mergetool"]
+	path = vim/.vim/pack/plugins/start/vim-mergetool
+	url = git@github.com:samoshkin/vim-mergetool.git
+[submodule "vim/.vim/pack/colors/start/vim-moonfly-colors"]
+	path = vim/.vim/pack/colors/start/vim-moonfly-colors
+	url = git@github.com:bluz71/vim-moonfly-colors.git
+[submodule "vim/.vim/pack/plugins/start/vim-kitty-runner"]
+	path = vim/.vim/pack/plugins/start/vim-kitty-runner
+	url = git@github.com:critterjohnson/vim-kitty-runner.git
+[submodule "vim/.vim/pack/plugins/start/vim-dlv"]
+	path = vim/.vim/pack/plugins/start/vim-dlv
+	url = git@github.com:critterjohnson/vim-delve.git
+[submodule "vim/.vim/pack/plugins/start/vim-antlr"]
+	path = vim/.vim/pack/plugins/start/vim-antlr
+	url = git@github.com:dylon/vim-antlr.git
+[submodule "vim/.vim/pack/plugins/start/copilot.vim"]
+	path = vim/.vim/pack/plugins/start/copilot.vim
+	url = https://github.com/github/copilot.vim
+[submodule "vim/.vim/pack/plugins/start/vim-llvm"]
+	path = vim/.vim/pack/plugins/start/vim-llvm
+	url = git@github.com:rhysd/vim-llvm.git

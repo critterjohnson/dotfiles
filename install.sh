@@ -1,8 +1,8 @@
-#!/usr/bin/env zsh
+#!/bin/bash
 
 set -e
 
-./packages.sh
+# ./packages.sh
 
 export PATH="$PATH:/usr/local/go/bin"
 
@@ -26,7 +26,8 @@ git submodule update --init --recursive
             	--enable-perlinterp=yes \
             	--enable-gui=gtk2 \
             	--enable-cscope \
-            	--prefix=/usr/local
+            	--prefix=/usr/local \
+                --enable-clipboard
     make
     sudo make install
     sudo rm -rf ${HOME}/.vim/swapfiles
@@ -38,7 +39,7 @@ git submodule update --init --recursive
     cd ${HOME}/Projects
     git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf || (cd ${HOME}/.fzf && git pull && cd ..)
     cd
-    printf '%s\n' y y n | sudo ./.fzf/install
+    printf '%s\n' y y n | ./.fzf/install
     chmod +x ${HOME}/.fzf.zsh
 )
 
@@ -53,12 +54,13 @@ git submodule update --init --recursive
     cd ${HOME}/.vim/pack/plugins/start/YouCompleteMe
     sudo git submodule update --init --recursive
     sudo chmod -R 777 ${HOME}/.vim
-    sudo -u nobody python3 install.py --all
+    python3 install.py --all
+    rm third_party/ycmd/third_party/tern_runtime/node_modules
 )
 
 # kitty
-(
-    sudo curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-)
+#(
+  #  sudo curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+#)
 
 ./move.sh

@@ -1,35 +1,41 @@
 " Critter's .vimrc
-" should be edited in the dotfiles repo and moved using `make`, not edited
+" should be edited in the dotfiles repo and moved using ./move.sh, not edited
 " directly
 
 """ Critter vim shortcuts
-" Ctrl + \	show/hide NERDTree
-" <C-P>		:Files - fuzzy search for files
+" Ctrl + \      show/hide NERDTree
+" <C-P>         :Files - fuzzy search for files
 " <C-G>         :Rg - fancy search for file
-" <F2>          :YcmCompleter GoToDefinition
+" <F2>          go to definition
 " <F3>          toggle word wrap
 " <F5>          toggle fold
 " <F6>          toggle search highlighting
-" <F7>		open new tmux pane DOESN'T DO ANYTHING ANYMORE
+" <F7>          open new tmux pane DOESN'T DO ANYTHING ANYMORE
 " <F8>          toggle 80 character colorcolumn
-" <leader>d     :YcmCompleter GetDoc
+" <leader>d     get documentation
 " <leader>gb    open git blame
 " <leader>gg    :GitGutterToggle
 " <leader>gd    open git diff
+" <leader>a     switch back and forth from header file
+" <leader>t     :TagBarToggle
 " Ctrl + t      next tab
 " Shift + t     previous tab
 
-" kitty integration
+" kitty integration (if not using Windows term)
 " <C-(h|j|k|l)> navigates between splits and kitty windows
 
-" material theme
+" tmux integration (if not using kitty)
+" <C-(h|j|k|l)> navigates between splits and tmux panes
+
+" theme
 if (has('termguicolors'))
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set t_Co=256
   set termguicolors
 endif
-colorscheme material
+"colo nord " trying out this colorscheme
+colo moonfly
 
 " NERDTree
 nnoremap <C-\> :NERDTreeToggle <CR>
@@ -40,13 +46,21 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 let g:NERDTreeShowHidden = 1
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif " close NERDTree if it's the last window left
 
+" copilot
+let g:copilot_enabled = 'false'
+nnoremap <silent> <leader>cp :Copilot enable <CR>
+imap <silent><script><expr> <C-TAB> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
 " YouCompleteMe
 " clangd
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath('clangd')
-nnoremap <leader>d :YcmCompleter GetDoc <CR>
-nnoremap <F2> :YcmCompleter GoToDefinition <CR>
+let g:ycm_auto_hover = ''
+nnoremap <silent> <leader>d :YcmCompleter GetDoc <CR>
+nnoremap <silent> <F2> :YcmCompleter GoToDefinition <CR>
 " let g:ycm_filetype_blacklist = { 'go': 1 } " let vim-go handle go
+" let g:ycm_filetype_blacklist = { 'cpp': 1, 'h': 1, 'c': 1 } " CS 2150
 
 " vim-go
 let g:go_highlight_fields = 1
@@ -60,6 +74,12 @@ let g:go_def_mapping_enabled = 0
 " other go
 autocmd BufEnter *.go  setlocal tabstop=8 shiftwidth=8 softtabstop=8 textwidth=80 noexpandtab cindent cinoptions=:0,l1,t0,g0,(0,W8 filetype=go
 
+" vim-delve
+"au VimEnter * let g:delve_use_vimux = 1 " have to do this for some reason
+let g:delve_use_kitty = 1
+autocmd BufEnter *.go nnoremap <silent> <leader>b :DlvToggleBreakpoint <CR>
+autocmd BufEnter *.go nnoremap <silent> <leader>c :DlvConnect :2345 <CR>
+
 " rust.vim
 let g:rustfmt_autosave = 1
 
@@ -69,45 +89,70 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1 " requires a powerline font
 
 " vim-fugitive
-nnoremap <leader>gb :Git blame <CR>
+nnoremap <silent> <leader>gb :Git blame <CR>
 
 " vim-gitgutter
 let g:gitgutter_enabled = 0
-nnoremap <leader>gg :GitGutterToggle <CR>
-nnoremap <leader>gd :Gdiffsplit <CR>
+nnoremap <silent> <leader>gg :GitGutterToggle <CR>
+nnoremap <silent> <leader>gd :Gdiffsplit <CR>
 
 " a.vim
 " TODO: make a plugin to use fzf instead of a.vim to switch between files,
 " could be configured to arbitrarily swap between files
+nnoremap <silent> <leader>a :A <CR>
+nnoremap <silent> <leader>va :AV <CR>
 let g:alternateSearchPath = 'sfr:../source,sfr:../src,sfr:../include,sfr:../inc,reg:/src/include/g' " add a regex pattern to replace src with include
 let g:alternateNoDefaultAlternate = 1
 
 " fzf
+set rtp+=~/.fzf
 set rtp+=~/fzf
 let g:fzf_layout = {'down' : '~20%'}
 
 " kitty
-let g:kitty_navigator_no_mappings = 1
-nnoremap <silent> <C-h> :KittyNavigateLeft <CR>
-nnoremap <silent> <C-j> :KittyNavigateDown <CR>
-nnoremap <silent> <C-k> :KittyNavigateUp <CR>
-nnoremap <silent> <C-l> :KittyNavigateRight <CR>
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+if $TERM == "xterm-kitty"
+    let g:kitty_navigator_no_mappings = 1
+    let g:tmux_navigator_no_mappings = 1 " disable tmux_navigator mappings so kitty navigation mappings work " disable tmux_navigator mappings so kitty navigation mappings work
+    nnoremap <silent> <C-h> :KittyNavigateLeft <CR>
+    nnoremap <silent> <C-j> :KittyNavigateDown <CR>
+    nnoremap <silent> <C-k> :KittyNavigateUp <CR>
+    nnoremap <silent> <C-l> :KittyNavigateRight <CR>
+    let &t_SI = "\<Esc>[6 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[2 q"
+endif
+
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+        let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+    else
+        let &t_SI = "\e[5 q"
+        let &t_EI = "\e[2 q"
+endif
+
+" regular terminal
+if $TERM == "screen-256color"
+    if ! executable("tmux")
+        let g:tmux_navigator_no_mappings = 1
+
+        set termguicolors
+        let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
+        let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
+    endif
+endif
 
 " markdown stuff
-autocmd BufEnter *.md setlocal textwidth=80
+autocmd BufEnter *.md setlocal textwidth=80 tabstop=2 shiftwidth=2
 
 " custom vim shortcuts
-nnoremap <F3> :set wrap! <CR>
-nnoremap <F4> :set relativenumber! <CR>
-nnoremap <F6> :set hlsearch! <CR>
-nnoremap <F7> :!tmux split-window -h -p 30<CR><CR>
-nnoremap <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
-nnoremap <C-P> :Files <CR>
-nnoremap <C-G> :Rg <CR>
-nnoremap <expr> <F5> &foldlevel ? 'zM' :'zR'
+nnoremap <silent> <F3> :set wrap! <CR>
+nnoremap <silent> <F4> :set relativenumber! <CR>
+nnoremap <silent> <F6> :set hlsearch! <CR>
+" nnoremap <silent> <F7> :!tmux split-window -h -p 30<CR><CR>
+nnoremap <silent> <F8> :execute "set colorcolumn=" . (&colorcolumn == "" ? "81" : "")<CR>
+nnoremap <silent> <C-P> :Files <CR>
+nnoremap <silent> <C-G> :Rg <CR>
+nnoremap <silent> <expr> <F5> &foldlevel ? 'zM' :'zR'
 nnoremap <silent> <C-t> :tabn <CR>
 nnoremap <silent> <S-t> :tabp <CR>
 " move by visual line (not wrapped line)
@@ -120,6 +165,13 @@ nmap k gk
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+" tagbar
+nnoremap <silent> <leader>t :TagbarToggle <CR>
+
+" vim-mergetool
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
 
 " misc settings
 set number
@@ -154,3 +206,5 @@ augroup vimrcEx
   autocmd FileType text setlocal textwidth=78
 augroup END
 
+" run these last
+highlight LineNr guibg=black
