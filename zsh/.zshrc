@@ -8,7 +8,7 @@
 # Alt-C		cd into fzf search
 
 # Aliases
-# vfzf		vim $(fzf)
+# vf		vim $(fzf)
 # kc            kubectl
 # gm            greymatter
 # bf            bat $(fzf)
