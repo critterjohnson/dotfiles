@@ -22,12 +22,18 @@ source $ZSH/oh-my-zsh.sh
 # use ~/.profile as place to store non-synced zsh configurations
 source ~/.profile
 
+# set up PATH first
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":"$HOME/.r2env/versions/radare2@git/bin":"/Applications/CMake.app/Contents/bin":$PATH
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
 # aliases
 alias vim='nvim'
 alias vf='vim $(fzf)'
 alias awsume='. awsume'
 alias kc='kubectl'
-alias gm='greymatter'
+#alias gm='greymatter'
+alias gm='~/Projects/cli/bin/greymatter'
 alias bf='bat $(fzf)'
 alias gdb='/usr/local/bin/gdb'
 alias gcm='git commit -S -m'
@@ -35,7 +41,7 @@ alias gcm='git commit -S -m'
 # autocompletions
 autoload -Uz compinit
 compinit
-which kubectl &> /dev/null && source <(kubectl completion zsh &> /dev/null)
+which kubectl &> /dev/null && source <(kubectl completion zsh)
 which kops &> /dev/null && source <(kops completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
 #which lxc &> /dev/null && source <(lxc completion zsh)
@@ -56,7 +62,8 @@ zstyle :prompt:pure:prompt:success color green
 if type 'fd' > /dev/null; then
   export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git' # requires https://github.com/sharkdp/fd
 else
-  export FZF_DEFAULT_COMMAD='find -L'
+  #export FZF_DEFAULT_COMMAND='find -L'
+  export FZF_DEFAULT_COMMAND='ag -g ""'
 fi
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 
@@ -109,9 +116,6 @@ lxcls () {
 # environment variables
 export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
 export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
-export PATH=/opt/homebrew/bin:$PATH
-export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":"$HOME/.r2env/versions/radare2@git/bin":"/Applications/CMake.app/Contents/bin":$PATH
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
 export LD_LIBRARY_PATH="$(go env GOPATH)/deps/dqlite/.libs/:$(go env GOPATH)/deps/raft/.libs/:${LD_LIBRARY_PATH}"
@@ -122,6 +126,6 @@ export LD_LIBRARY_PATH="/home/critterjohnson/go/deps/raft/.libs/:/home/critterjo
 export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
 export LLVM_DIR=/opt/homebrew/opt/llvm@14/lib/cmake
 export TIPCLANG=/opt/homebrew/opt/llvm@14/bin/clang
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
 
 eval $(thefuck --alias)
