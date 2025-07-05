@@ -26,6 +26,7 @@ source ~/.profile
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$HOME/go/bin":"$HOME/Library/Python/3.7/bin":"/usr/local/sbin":"/usr/local/opt/curl/bin":"$HOME/.deno/bin":"$HOME/.cargo/bin:/usr/local/go/bin:$HOME/.local/kitty.app/bin":"$HOME/.r2env/versions/radare2@git/bin":"/Applications/CMake.app/Contents/bin":$PATH
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="$HOME/Projects/ghidra_11.3.2_PUBLIC:$PATH"
 
 # aliases
 alias vim='nvim'
@@ -35,8 +36,9 @@ alias kc='kubectl'
 #alias gm='greymatter'
 alias gm='~/Projects/cli/bin/greymatter'
 alias bf='bat $(fzf)'
-alias gdb='/usr/local/bin/gdb'
+#alias gdb='/usr/local/bin/gdb'
 alias gcm='git commit -S -m'
+alias ghidra='ghidraRun'
 
 # autocompletions
 autoload -Uz compinit

@@ -178,6 +178,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.diagnostic.config({virtual_text = true})
+
 ---- language servers
 local lspconfig = require('lspconfig')
 lspconfig.clangd.setup {}
