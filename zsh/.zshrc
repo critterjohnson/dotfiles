@@ -48,6 +48,7 @@ which kops &> /dev/null && source <(kops completion zsh)
 which cue &> /dev/null && source <(cue completion zsh)
 #which lxc &> /dev/null && source <(lxc completion zsh)
 complete -C '/usr/local/bin/aws_completer' aws
+which flux &> /dev/null && source <(flux completion zsh)
 
 # zsh-vi-mode
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
@@ -74,6 +75,9 @@ if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     bindkey "^[^[[C" forward-word
     bindkey "^[^[[D" backward-word
 fi
+
+# brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # kitty
 if [ "$TERM" = "xterm-kitty" ]; then
@@ -116,8 +120,6 @@ lxcls () {
 }
 
 # environment variables
-export BW_CLIENTID='user.16df2d79-8045-4a5f-a0b4-ac9d00012ba8'
-export BW_CLIENTSECRET='XxXSE2SYx2BBlVWUspI1mLVn4n0zw6'
 export KOPS_STATE_STORE=s3://bs-kops-state-store
 export EDITOR=vim
 export LD_LIBRARY_PATH="$(go env GOPATH)/deps/dqlite/.libs/:$(go env GOPATH)/deps/raft/.libs/:${LD_LIBRARY_PATH}"
